@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components';
 
 function LocationButton(props) {
@@ -25,7 +25,7 @@ function LocationButton(props) {
   return (
     <div>
       <Button onClick={() => findme()}>
-        Push me
+        Current Weather
       </Button>
     </div>
   )

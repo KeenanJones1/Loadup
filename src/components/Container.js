@@ -15,16 +15,16 @@ function Container() {
 
 
  const setCoords = (lat, long) => {
-  console.log("lat", lat, "long", long)
-  setStateObject({...stateObject, coordinates: { latitude: lat, longitude: long}})
+  setStateObject({...stateObject, coordinates: {latitude: lat, longitude: long}})
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`)
   .then(resp => resp.json())
-  .then(data => console.log(data))
+  .then(data => setStateObject({coordinates: {latitude: lat, longitude: long}, weather: data}))
  }
 
+ console.log(stateObject);
  return (
   <div>
-   {!stateObject.weather.temp ? <LocationButton setCoords={setCoords}/>  : <WeatherCard />}
+   {!stateObject.weather.main ? <LocationButton setCoords={setCoords}/>  : <WeatherCard weather={stateObject.weather}/>}
   </div>
  )
 }
