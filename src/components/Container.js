@@ -21,7 +21,6 @@ function Container() {
   .then(data => setStateObject({coordinates: {latitude: lat, longitude: long}, weather: data}))
  }
 
- console.log(stateObject);
  return (
   <div>
    {!stateObject.weather.main ? <LocationButton setCoords={setCoords}/>  : <WeatherCard weather={stateObject.weather}/>}
